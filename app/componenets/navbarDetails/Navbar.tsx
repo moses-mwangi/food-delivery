@@ -7,9 +7,13 @@ import { Search, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useOrder } from "../../context/OrderContext";
 import UserSignPage from "./userSign";
+import { useUser } from "@clerk/nextjs";
+import SearchStore from "./SearchStore";
 
 export default function Navbar() {
   const { notification } = useOrder();
+  const { user } = useUser();
+
   const [isVisible, setIsVisible] = useState(true);
   let lastScrollY = 0;
 
@@ -51,25 +55,15 @@ export default function Navbar() {
           className=" w-full h-auto"
         />
       </Link>
-      <div className="w-[40%] relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Search className="h-5 w-5 text-gray-400" />
-        </div>
-        <Input
-          type="text"
-          className="rounded-3xl pl-10 py-5 w-full text-[16px] text-gray-500 focus:outline-none focus:border-none"
-          placeholder="Search stores..."
-        />
-      </div>
+      <SearchStore />
 
-      <div className="flex gap-4 items-center">
-        <Link href="/cart" className="relative">
-          <ShoppingCart className="w-7 h-7 text-slate-500" />
+      <div className="flex gap-8 items-center">
+        <Link href={`${user ? "/cart" : "/sign-up"}`} className="relative">
+          <ShoppingCart className="w-[26px] h-[26px] text-slate-600/85" />
           {notification !== 0 && (
             <div className="w-2 h-2 bg-orange-500 rounded-full absolute -top-2 -right-2" />
           )}
         </Link>
-        {/* <SignIn /> */}
         <UserSignPage />
       </div>
     </div>

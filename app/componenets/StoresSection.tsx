@@ -6,6 +6,7 @@ import { Barlow_Semi_Condensed } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { useOneRestaurants } from "@/services/useOrder";
 import { useOrder } from "../context/OrderContext";
+import { useUser } from "@clerk/nextjs";
 
 const serif = Barlow_Semi_Condensed({
   weight: ["400", "500"],
@@ -18,6 +19,7 @@ export default function StoresSection() {
   const router = useRouter();
   const { restaurants } = useOneRestaurants();
   const { setDeliveryPrice } = useOrder();
+  const { user } = useUser();
 
   return (
     <div className="w-[80%] mx-auto">
@@ -39,10 +41,10 @@ export default function StoresSection() {
             <div
               onClick={() => {
                 setDeliveryPrice(store.deliveryPrice);
-                router.push(`/${store.restName}`);
+                router.push(`/${user ? store.restName : "sign-up"}`);
                 router.refresh();
               }}
-              className="rounded-xl h-40 w-80 flex overflow-hidden"
+              className="rounded-xl h-[152px] w-80 flex overflow-hidden"
             >
               <Image
                 src={store.image}
@@ -53,13 +55,13 @@ export default function StoresSection() {
                 className="rounded-xl h-auto w-full hover:scale-110 transition-all duration-150"
               />
             </div>
-            <p className="leading-none text-black/85 text-[18px] font-[600]">
+            <p className="leading-none text-black/85 text-[16px] font-[600]">
               {store.restName}
             </p>
             <p
               className={`${cn(
                 serif.className
-              )} leading-none text-gray-700 text-[15px]`}
+              )} leading-none text-gray-700 text-[14px]`}
             >
               {store.location}
             </p>

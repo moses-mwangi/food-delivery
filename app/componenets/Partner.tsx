@@ -15,7 +15,7 @@ export default function Partner() {
         <div className="flex flex-col gap-5 items-center">
           <Image src={delivery} alt="lets be members" />
           <h1 className="text-2xl font-semibold">Become a rider</h1>
-          <p className="text-gray-800">
+          <p className="text-stone-600/95 text-[16px]">
             Enjoy flexibility and competitive earnings by delivering orders
           </p>
           <Link
@@ -28,7 +28,7 @@ export default function Partner() {
         <div className="flex flex-col gap-5 items-center">
           <Image src={chef} alt="lets be members" />
           <h1 className="text-2xl font-semibold">Become a partner</h1>
-          <p className="text-gray-800">
+          <p className="text-stone-600/95 text-[16px]">
             Our technology and user base can help you boost sales and unlock new
             opportunitie
           </p>
@@ -42,7 +42,7 @@ export default function Partner() {
         <div className="flex flex-col gap-5 items-center">
           <Image src={member} alt="lets be members" />
           <h1 className="text-2xl font-semibold">Careers</h1>
-          <p className="text-gray-800">
+          <p className="text-stone-600 text-[16px]">
             If you’re ambitious, humble, and love working with others, then we
             want to hear from you!
           </p>

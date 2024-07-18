@@ -55,9 +55,9 @@ export default function Order() {
               {order.type}
               {/* {quantity !== 0 && <span>& {quantity}</span>} */}
             </h1>
-            <div className="flex justify-between items-center w-[52px]">
+            <div className="flex justify-between items-center w-[56px]">
               <Trash
-                className="w-[14px] h-[14px] text-red-600"
+                className="w-[14px] h-[14px] text-red-600 cursor-pointer"
                 onClick={() => delOrder(order._id)}
               />
               <span className="font-medium text-[13px] text-slate-600">{`£${order.price}`}</span>

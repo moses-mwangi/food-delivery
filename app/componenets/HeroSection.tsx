@@ -32,7 +32,6 @@ export default function HeroSection() {
             minima minus quod, quisquam officia. Reiciendis officia et fuga
             fugit, placeat iure.
           </p>
-          <Link href="/curuser">curuser</Link>
           <Card className="text-slate-600 w-32 flex justify-center  py-[10px] leading-5  rounded-full">
             <Link href="/" className={`${cn(serif.className)}`}>
               View Stores

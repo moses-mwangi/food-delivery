@@ -51,33 +51,51 @@ export default function SuccessfullPage() {
     return response.data;
   });
 
-  const currentOrder = data?.filter(
+  const currentOrders = data?.filter(
     (el) =>
       el.address.name === user?.fullName ||
       (el.address.name === user?.firstName &&
         el.address.email === user?.emailAddresses[0].emailAddress)
   );
 
+  if (!currentOrders) return null;
+
+  function getLatestOrder() {
+    const sortedOrders = currentOrders?.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    const latestDate = new Date(sortedOrders!.at(0)!.date).getTime();
+
+    const recentOrders = sortedOrders?.filter(
+      (order) => new Date(order.date).getTime() === latestDate
+    );
+
+    return recentOrders;
+  }
+
+  const currentUserLastOrder = getLatestOrder();
+
   const expectedDeliveryTime = (date: Date) => {
     const created = new Date(date);
-
     created.setMinutes(created.getMinutes() + 15);
-
     const hours = created.getHours();
     const minutes = created.getMinutes();
-
     const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
     return `${hours}:${paddedMinutes}`;
   };
 
-  if (!currentOrder) return null;
-
   return (
     <div className="flex flex-col justify-between">
+      <p
+        onClick={() => {
+          console.log();
+        }}
+      ></p>
       <Navbar />
       <div className=" mt-32 w-[86%] mx-auto">
-        {currentOrder?.map((el) => (
+        {currentUserLastOrder?.map((el) => (
           <Card
             className="w-full py-8 px-6 mb-10 bg-slate-200/20 border-slate-200/20"
             key={el._id}

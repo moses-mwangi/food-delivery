@@ -1,10 +1,12 @@
 "use client";
 
-import kfc from "../../public/images/bowl.png";
+import first from "../../public/images/customer 1.png";
+import second from "../../public/images/customer 2.png";
+import third from "../../public/images/customer 3.png";
+import fourth from "../../public/images/customer 4.png";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
@@ -14,25 +16,25 @@ const TestimonialData = [
     id: 1,
     name: "Victor",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
-    img: kfc,
+    img: first,
   },
   {
     id: 2,
     name: "Satya Nadella",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
-    img: kfc,
+    img: second,
   },
   {
     id: 3,
     name: "Virat Kohli",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
-    img: kfc,
+    img: third,
   },
   {
     id: 5,
     name: "Sachin Tendulkar",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
-    img: kfc,
+    img: fourth,
   },
 ];
 
