@@ -9,10 +9,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Navbar from "../componenets/Navbar";
+import Navbar from "../componenets/navbarDetails/Navbar";
 import Image from "next/image";
 import CartTotals from "./CartTotals";
 import { RxCross2 } from "react-icons/rx";
+import Link from "next/link";
 
 export default function CartPage() {
   const { orders, delOrder } = useOrder();
@@ -36,12 +37,18 @@ export default function CartPage() {
             {orders.map((el) => (
               <TableRow key={el._id} className="text-[13px]">
                 <TableCell>
-                  <Image src={el.image} alt="food" width={30} height={30} />
+                  <Image
+                    className="w-10 h-auto"
+                    src={el.image}
+                    alt="food"
+                    width={30}
+                    height={30}
+                  />
                 </TableCell>
-                <TableCell>{el.name}</TableCell>
+                <TableCell>{el.type}</TableCell>
                 <TableCell>${el.price}</TableCell>
-                <TableCell>2</TableCell>
-                <TableCell>${el.price * 2}</TableCell>
+                <TableCell>1</TableCell>
+                <TableCell>${el.price * 1}</TableCell>
                 <TableCell
                   className="cursor-pointer"
                   onClick={() => delOrder(el._id)}

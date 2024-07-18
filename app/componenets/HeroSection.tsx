@@ -1,6 +1,6 @@
 import React from "react";
 import header_img from "../../public/assets/header_img.png";
-import Navbar from "./Navbar";
+import Navbar from "./navbarDetails/Navbar";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,7 @@ export default function HeroSection() {
   return (
     <div className="w-[80%] mx-auto mb-10">
       <Navbar />
+
       <div className="bg-header-img h-[420px] mt-32">
         <div className=" w-[60%] flex flex-col gap-4 pl-14 pt-32">
           <p
@@ -31,6 +32,7 @@ export default function HeroSection() {
             minima minus quod, quisquam officia. Reiciendis officia et fuga
             fugit, placeat iure.
           </p>
+          <Link href="/curuser">curuser</Link>
           <Card className="text-slate-600 w-32 flex justify-center  py-[10px] leading-5  rounded-full">
             <Link href="/" className={`${cn(serif.className)}`}>
               View Stores

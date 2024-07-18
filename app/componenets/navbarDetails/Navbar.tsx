@@ -1,16 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import logo from "../../public/assets/logo.png";
+import logo from "../../../public/assets/logo.png";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
 import { Search, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import { useOrder } from "../context/OrderContext";
-import SignIn from "../signIn/SignIn";
+import { useOrder } from "../../context/OrderContext";
+import UserSignPage from "./userSign";
 
 export default function Navbar() {
-  const [user, setUser] = useState(true);
   const { notification } = useOrder();
   const [isVisible, setIsVisible] = useState(true);
   let lastScrollY = 0;
@@ -39,14 +37,20 @@ export default function Navbar() {
 
   return (
     <div
-      className={`mx-auto z-50 py-7 fixed top-0 left-0 right-0 w-[87%] flex justify-between items-center transition-transform duration-300 ${
+      className={`mx-auto z-50 py-7 fixed top-0 left-0 right-0 w-[83%] flex justify-between items-center transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <Link href="/">
-        <Image src={logo} alt="logo" width={130} height={130} />
+        <Image
+          src={logo}
+          alt="logo"
+          width={130}
+          height={130}
+          priority
+          className=" w-full h-auto"
+        />
       </Link>
-
       <div className="w-[40%] relative">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <Search className="h-5 w-5 text-gray-400" />
@@ -65,7 +69,8 @@ export default function Navbar() {
             <div className="w-2 h-2 bg-orange-500 rounded-full absolute -top-2 -right-2" />
           )}
         </Link>
-        {user && <SignIn />}
+        {/* <SignIn /> */}
+        <UserSignPage />
       </div>
     </div>
   );

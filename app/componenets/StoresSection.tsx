@@ -1,17 +1,11 @@
-import { Card } from "@/components/ui/card";
+"use client";
 import Image from "next/image";
 import React from "react";
-import logo from "../../public/assets/food_27.png";
-import kfc from "../../public/images/kfc.jpeg";
-import pizzainn from "../../public/images/pizzainn.jpeg";
-import chickeinn from "../../public/images/ckickenInn.png";
-import artcafe from "../../public/images/artcafe.png";
-import galitoes from "../../public/images/quick.png";
-import bowl from "../../public/images/bowl.png";
-import Link from "next/link";
-
 import { cn } from "@/lib/utils";
 import { Barlow_Semi_Condensed } from "next/font/google";
+import { useRouter } from "next/navigation";
+import { useOneRestaurants } from "@/services/useOrder";
+import { useOrder } from "../context/OrderContext";
 
 const serif = Barlow_Semi_Condensed({
   weight: ["400", "500"],
@@ -20,20 +14,11 @@ const serif = Barlow_Semi_Condensed({
   style: ["normal"],
 });
 
-const stores = [
-  { restName: "KFC", image: kfc, id: 1 },
-  { restName: "Galitos", image: galitoes, id: 2 },
-  { restName: "Pizza-Inn", image: pizzainn, id: 3 },
-  { restName: "Chiken-Inn", image: chickeinn, id: 4 },
-  { restName: "Artcaffe", image: artcafe, id: 5 },
-  { restName: "Quickmatt", image: bowl, id: 6 },
-];
-
-interface Props {
-  params: { id: string };
-}
-
 export default function StoresSection() {
+  const router = useRouter();
+  const { restaurants } = useOneRestaurants();
+  const { setDeliveryPrice } = useOrder();
+
   return (
     <div className="w-[80%] mx-auto">
       <h1 className="text-2xl font-semibold text-gray-800 pb-3">
@@ -49,18 +34,25 @@ export default function StoresSection() {
         <br />. You will then be able
       </p>
       <div className="grid grid-cols-3 gap-y-4 gap-x-2">
-        {stores.map((store) => (
+        {restaurants?.map((store) => (
           <div key={store.restName} className="flex flex-col gap-2">
-            <Link
-              href={store.restName}
+            <div
+              onClick={() => {
+                setDeliveryPrice(store.deliveryPrice);
+                router.push(`/${store.restName}`);
+                router.refresh();
+              }}
               className="rounded-xl h-40 w-80 flex overflow-hidden"
             >
               <Image
                 src={store.image}
                 alt="stores-logo"
-                className="rounded-xl hover:scale-110 transition-all duration-150"
+                width={300}
+                height={300}
+                priority
+                className="rounded-xl h-auto w-full hover:scale-110 transition-all duration-150"
               />
-            </Link>
+            </div>
             <p className="leading-none text-black/85 text-[18px] font-[600]">
               {store.restName}
             </p>
@@ -69,7 +61,7 @@ export default function StoresSection() {
                 serif.className
               )} leading-none text-gray-700 text-[15px]`}
             >
-              Nairobi
+              {store.location}
             </p>
           </div>
         ))}

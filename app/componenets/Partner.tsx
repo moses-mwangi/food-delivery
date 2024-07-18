@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function Partner() {
   return (
-    <div className="flex flex-col gap-14 items-center mt-12 px-28">
+    <div className="flex flex-col gap-14 items-center mt-12 mb-28 px-28">
       <Image src={handshake} alt="lets be members" />
       <h1 className="text-4xl font-semibold">Let’s do it together</h1>
       <div className="flex justify-between">

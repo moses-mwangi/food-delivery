@@ -1,26 +1,31 @@
 "use client";
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { StaticImageData } from "next/image";
-import { food_list } from "@/public/assets/assets";
-import { Order, SingleOrder, Food_list, OrderContextType } from "../types";
+import React, { createContext, useContext, ReactNode } from "react";
+import { FoodList, OrderContextType } from "../types";
+import { useOneRestaurants } from "@/services/useOrder";
 
 const OrderContext = createContext<OrderContextType | undefined>(undefined);
 
 export const OrderProvider = ({ children }: { children: ReactNode }) => {
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [singleFoodOrder, setSingleFoodOrder] = useState<SingleOrder>();
-  const deliveryPrice = 25;
-  const food_lists = food_list;
-  const totalPrice =
-    orders.reduce((acc, order) => acc + order.price, 0) + deliveryPrice;
-  const notification = orders.length;
+  const {
+    orders,
+    setOrders,
+    singleFoodOrder,
+    setSingleFoodOrder,
+    setDeliveryPrice,
+    totalPrice,
+    deliveryPrice,
+    quantity,
+    setQuantity,
+    notification,
+    restaurants,
+  } = useOneRestaurants();
 
   function delOrder(id: string) {
     const filteredOrders = orders.filter((el) => el._id !== id);
     setOrders(filteredOrders);
   }
 
-  const addOrder = (order: Order) => {
+  const addOrder = (order: FoodList) => {
     setOrders((prevOrders) => [...prevOrders, order]);
   };
 
@@ -30,9 +35,11 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
         orders,
         addOrder,
         deliveryPrice,
-        food_lists,
+        quantity,
+        setQuantity,
         singleFoodOrder,
         setSingleFoodOrder,
+        setDeliveryPrice,
         setOrders,
         totalPrice,
         delOrder,

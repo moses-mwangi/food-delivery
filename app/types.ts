@@ -1,45 +1,53 @@
-import { StaticImageData } from "next/image";
+import { SetStateAction } from "react";
 
-export interface Order {
-  _id: string;
+export interface User {
+  id: string;
+  email: string;
   name: string;
-  image: StaticImageData;
-  price: number;
-  description: string;
-  category: string;
+  photo?: string;
+  city: string;
+  address: string;
+  country: string;
+  _id: string;
 }
 
-export interface SingleOrder {
-  _id: string;
-  name: string;
-  image: StaticImageData;
-  price: number;
-  description: string;
-  category: string;
-  // quantity: number;
+export interface UserContextProps {
+  users: User[] | undefined;
+  current: User | undefined;
 }
 
-export interface Food_list {
+export interface FoodList {
   _id: string;
-  name: string;
-  image: StaticImageData;
-  price: number;
   description: string;
-  category: string;
+  price: number;
+  image: string;
+  type: string;
+  rating: number;
+  quantity: number;
 }
-[];
+
+export interface TypeRestaurant {
+  _id: string;
+  image: string;
+  restName: string;
+  location: string;
+  deliveryPrice: number;
+  food_lists: FoodList[];
+}
 
 export interface OrderContextType {
-  orders: Order[];
-  addOrder: (order: Order) => void;
+  orders: FoodList[];
+  addOrder: (order: FoodList) => void;
   deliveryPrice: number;
-  singleFoodOrder: SingleOrder | undefined;
-  food_lists: Food_list[];
+  quantity: number;
+  singleFoodOrder: FoodList | undefined;
   totalPrice: number;
   notification: number;
+  setQuantity: React.Dispatch<SetStateAction<number>>;
+  setDeliveryPrice: React.Dispatch<SetStateAction<number>>;
   delOrder: (id: string) => void;
   setSingleFoodOrder: React.Dispatch<
-    React.SetStateAction<SingleOrder | undefined>
+    React.SetStateAction<FoodList | undefined>
   >;
-  setOrders: React.Dispatch<React.SetStateAction<Order[]>>;
+  setOrders: React.Dispatch<React.SetStateAction<FoodList[]>>;
 }

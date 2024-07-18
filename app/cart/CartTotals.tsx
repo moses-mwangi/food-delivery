@@ -7,12 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import DeliveryConfirmatory from "./DeliveryConfirmatory";
 import { useRouter } from "next/navigation";
-import { Order } from "../types";
+import { FoodList } from "../types";
 
 export default function CartTotals() {
-  const { orders, deliveryPrice, totalPrice, setOrders, singleFoodOrder } =
-    useOrder();
-  const [initialOrders, setInitialOrders] = useState<Order[]>([]);
+  const { orders, deliveryPrice, totalPrice, setOrders } = useOrder();
+  const [initialOrders, setInitialOrders] = useState<FoodList[]>([]);
   const SubTotalPrice = orders.reduce((acc, order) => acc + order.price, 0);
   const router = useRouter();
 
@@ -32,23 +31,25 @@ export default function CartTotals() {
         <h1 className="text-xl font-semibold mb-5">Cart Totals</h1>
         <span className="flex justify-between py-2 font-medium text-muted-foreground text-[14px]">
           <p>Subtotal</p>
-          <p>${SubTotalPrice}</p>
+          <p>£{SubTotalPrice}</p>
         </span>
-        <Separator />
+
         <span className="flex justify-between py-2 font-medium text-muted-foreground text-[14px]">
           <p>Delivery Fee</p>
-          <p>${deliveryPrice}</p>
+          <p>£{deliveryPrice}</p>
         </span>
         <Separator />
         <span className="flex justify-between py-3 text-[18px] text-gray-700 font-[500]">
           <p>Total</p>
-          <p>${totalPrice}</p>
+          <p>£{totalPrice}</p>
         </span>
         <div className="flex justify-between">
           <DeliveryConfirmatory />
           <Card
             className="py-[6px] px-4 mt-4 text-[13px] font-normal text-slate-200 bg-orange-500 rounded-sm cursor-pointer"
-            onClick={() => {}}
+            onClick={() => {
+              router.back();
+            }}
           >
             BACK
           </Card>
