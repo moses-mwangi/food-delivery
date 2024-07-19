@@ -80,44 +80,44 @@ export default function CartPage() {
         </Table>
         <div className="grid grid-cols-2 gap-24 mt-16">
           <div className="">
-            <h1 className="text-xl font-semibold mb-5">
+            <div className="text-xl font-semibold mb-5">
               <Skeleton className="w-14 h-5 bg-slate-300/50" />
-            </h1>
-            <span className="flex justify-between py-2 font-medium text-muted-foreground text-[14px]">
-              <p>
+            </div>
+            <div className="flex justify-between py-2 font-medium text-muted-foreground text-[14px]">
+              <div>
                 <Skeleton className="w-14 h-5 bg-slate-300/50" />
-              </p>
-              <p>
+              </div>
+              <div>
                 <Skeleton className="w-14 h-5 bg-slate-300/50" />
-              </p>
-            </span>
+              </div>
+            </div>
 
-            <span className="flex justify-between py-2 font-medium text-muted-foreground text-[14px]">
-              <p>
+            <div className="flex justify-between py-2 font-medium text-muted-foreground text-[14px]">
+              <div>
                 <Skeleton className="w-14 h-5 bg-slate-300/50" />
-              </p>
-              <p>
+              </div>
+              <div>
                 <Skeleton className="w-12 h-4 bg-slate-300/50" />
-              </p>
-            </span>
+              </div>
+            </div>
             <Skeleton className=" w-full h-2 bg-slate-300/50" />
-            <span className="flex justify-between py-3 text-[18px] text-gray-700 font-[500]">
-              <p>
+            <div className="flex justify-between py-3 text-[18px] text-gray-700 font-[500]">
+              <div>
                 <Skeleton className="w-14 h-6 bg-slate-300/50" />
-              </p>
-              <p>
+              </div>
+              <div>
                 <Skeleton className="w-14 h-6 bg-slate-300/50" />
-              </p>
-            </span>
+              </div>
+            </div>
             <div className="flex justify-between">
               <Skeleton className="w-20 h-6 rounded-full bg-slate-300/50" />
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <p className="text-[14px]">
+            <div className="text-[14px]">
               <Skeleton className="flex h-5 bg-slate-300/50 w-full" />
-            </p>
+            </div>
             <div className=" grid grid-cols-[6fr_1fr] relative">
               <Skeleton className="flex h-8 w-full  bg-slate-300/50" />
             </div>

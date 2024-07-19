@@ -94,14 +94,14 @@ export default function SuccessfullPage() {
         }}
       ></p>
       <Navbar />
-      <div className=" mt-32 w-[86%] mx-auto">
+      <div className="md:mt-32  md:w-[86%] mx-auto">
         {currentUserLastOrder?.map((el) => (
           <Card
-            className="w-full py-8 px-6 mb-10 bg-slate-200/20 border-slate-200/20"
+            className="w-full pt-20 md:pt-0 py-8 px-6 mb-10 bg-slate-200/20 border-slate-200/20"
             key={el._id}
           >
             <div>
-              <div className="flex justify-between">
+              <div className="flex flex-col md:flex-row mt-8 md:mt-0 justify-between">
                 <span className="text-2xl font-bold">
                   Order Status : {el.status}
                 </span>
@@ -112,7 +112,7 @@ export default function SuccessfullPage() {
               <Progress value={6} className="animate-pulse h-3 mt-3" />
             </div>
 
-            <div className="grid grid-cols-2 gap-7 mt-7">
+            <div className="grid md:grid-cols-2 gap-7 mt-7">
               <div className="flex flex-col gap-5">
                 <span className="flex flex-col gap-1">
                   <h1 className="text-[16px] font-medium">Delivering to:</h1>
@@ -149,7 +149,7 @@ export default function SuccessfullPage() {
                     alt="restaurant"
                     width={500}
                     height={300}
-                    className="w-auto h-full rounded-md"
+                    className="w-full md:w-auto h-full rounded-md"
                   />
                 </Card>
               </div>

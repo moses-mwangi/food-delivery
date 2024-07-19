@@ -31,12 +31,12 @@ export default function FoodListPage({ food_list }: Props) {
               height={200}
               className=" h-full w-full rounded-l-[8px] relative"
             />
-            <div className="grid grid-cols-1 gap-2">
+            <div className="grid grid-cols-1 gap-2 ml-5 md:ml-0">
               <p className="text-stone-700 font-medium text-[15px]">
                 {el.type}
               </p>
               <p className="text-stone-600 text-[12px]">{el.description}</p>
-              <div className="flex items-center  justify-between pr-8">
+              <div className="flex items-center mb-4 md:mb-0  justify-between pr-8">
                 <span className="text-globalColor mr-3 text-[12px] font-semibold">
                   £{el.price}
                 </span>

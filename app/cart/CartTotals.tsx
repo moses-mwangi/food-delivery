@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useOrder } from "../context/OrderContext";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import DeliveryConfirmatory from "./DeliveryConfirmatory";
 import { useRouter } from "next/navigation";
@@ -26,7 +25,7 @@ export default function CartTotals() {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-24 mt-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-24 mt-16">
       <div className="">
         <h1 className="text-xl font-semibold mb-5">Cart Totals</h1>
         <span className="flex justify-between py-2 font-medium text-muted-foreground text-[14px]">
@@ -56,7 +55,7 @@ export default function CartTotals() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className=" hidden md:flex flex-col gap-2">
         <p className="text-[14px]">if you have a promo code,Enter it here</p>
         <div className=" grid grid-cols-[6fr_1fr] relative">
           <input

@@ -22,7 +22,7 @@ export default function StoresSection() {
   const { user } = useUser();
 
   return (
-    <div className="w-[80%] mx-auto">
+    <div className="md:w-[80%] px-6 mx-auto">
       <h1 className="text-2xl font-semibold text-gray-800 pb-3">
         Explore some of our stores
       </h1>
@@ -35,7 +35,7 @@ export default function StoresSection() {
         simply enter your delivery address
         <br />. You will then be able
       </p>
-      <div className="grid grid-cols-3 gap-y-4 gap-x-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-7">
         {restaurants?.map((store) => (
           <div key={store.restName} className="flex flex-col gap-2">
             <div
@@ -44,7 +44,7 @@ export default function StoresSection() {
                 router.push(`/${user ? store.restName : "sign-up"}`);
                 router.refresh();
               }}
-              className="rounded-xl h-[152px] w-80 flex overflow-hidden"
+              className="rounded-xl h-[152px] w-72 md:w-[184px] md:h-[140px] mlg:w-72 flex overflow-hidden"
             >
               <Image
                 src={store.image}

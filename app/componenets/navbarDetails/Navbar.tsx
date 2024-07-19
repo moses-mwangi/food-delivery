@@ -9,6 +9,7 @@ import { useOrder } from "../../context/OrderContext";
 import UserSignPage from "./userSign";
 import { useUser } from "@clerk/nextjs";
 import SearchStore from "./SearchStore";
+import { NavbarSheet } from "./NavbarSheet";
 
 export default function Navbar() {
   const { notification } = useOrder();
@@ -40,31 +41,34 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div
-      className={`mx-auto z-50 py-7 fixed top-0 left-0 right-0 w-[83%] flex justify-between items-center transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
-      <Link href="/">
-        <Image
-          src={logo}
-          alt="logo"
-          width={130}
-          height={130}
-          priority
-          className=" w-full h-auto"
-        />
-      </Link>
-      <SearchStore />
-
-      <div className="flex gap-8 items-center">
-        <Link href={`${user ? "/cart" : "/sign-up"}`} className="relative">
-          <ShoppingCart className="w-[26px] h-[26px] text-slate-600/85" />
-          {notification !== 0 && (
-            <div className="w-2 h-2 bg-orange-500 rounded-full absolute -top-2 -right-2" />
-          )}
+    <div>
+      <NavbarSheet />
+      <div
+        className={`mx-auto z-50 py-7 fixed top-0 left-0 right-0 w-[83%] hidden md:flex justify-between items-center transition-transform duration-300 ${
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <Link href="/">
+          <Image
+            src={logo}
+            alt="logo"
+            width={130}
+            height={130}
+            priority
+            className=" w-full h-auto"
+          />
         </Link>
-        <UserSignPage />
+        <SearchStore />
+
+        <div className="flex gap-8 items-center">
+          <Link href={`${user ? "/cart" : "/sign-up"}`} className="relative">
+            <ShoppingCart className="w-[26px] h-[26px] text-slate-600/85" />
+            {notification !== 0 && (
+              <div className="w-2 h-2 bg-orange-500 rounded-full absolute -top-2 -right-2" />
+            )}
+          </Link>
+          <UserSignPage />
+        </div>
       </div>
     </div>
   );
