@@ -1,3 +1,30 @@
+// {
+//   "extends": ["next/babel", "next/core-web-vitals"]
+// }
+// {
+//   "extends": ["next", "next/core-web-vitals"]
+// }
+
 {
-  "extends": ["next/babel", "next/core-web-vitals"]
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react-hooks/exhaustive-deps": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "no-var": "off"
+    // "semi": ["error", "always"],
+    // "quotes": ["error", "double"]
+  }
 }
