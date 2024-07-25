@@ -11,6 +11,21 @@ export interface User {
   _id: string;
 }
 
+export interface Users {
+  data: {
+    data: {
+      id: string;
+      email: string;
+      name: string;
+      photo?: string;
+      city: string;
+      address: string;
+      country: string;
+      _id: string;
+    }[];
+  };
+}
+
 export interface UserContextProps {
   users: User[] | undefined;
   current: User | undefined;
@@ -33,6 +48,19 @@ export interface TypeRestaurant {
   location: string;
   deliveryPrice: number;
   food_lists: FoodList[];
+}
+
+export interface TypeRestaurants {
+  data: {
+    data: {
+      _id: string;
+      image: string;
+      restName: string;
+      location: string;
+      deliveryPrice: number;
+      food_lists: FoodList[];
+    }[];
+  };
 }
 
 export interface OrderContextType {

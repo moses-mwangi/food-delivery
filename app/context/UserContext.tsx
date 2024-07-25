@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, ReactNode } from "react";
-import { User, UserContextProps } from "../types";
+import { User, UserContextProps, Users } from "../types";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { useUser } from "@clerk/nextjs";
@@ -11,14 +11,17 @@ const UserContext = createContext<UserContextProps | undefined>(undefined);
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const { user } = useUser();
 
-  const { data: users } = useQuery<User[]>("users", async () => {
-    const response = await axios.get<User[]>(`/api/users`);
+  const { data: fetchedUsers } = useQuery<Users>("users", async () => {
+    const response = await axios.get<Users>(`http://127.0.0.1:3003/api/users`);
+
     return response.data;
   });
 
-  const current = users?.find(
+  const current = fetchedUsers?.data.data.find(
     (el) => el.email === user?.emailAddresses[0].emailAddress
   );
+
+  const users = fetchedUsers?.data.data;
 
   const value = { users, current };
 

@@ -34,24 +34,30 @@ interface Items {
 }
 
 interface PlaceOrder {
-  _id: string;
-  status: string;
-  totalAmount: number;
-  address: Address;
-  items: Items[];
-  date: Date;
-  payment: string;
+  data: {
+    order: {
+      _id: string;
+      status: string;
+      totalAmount: number;
+      address: Address;
+      items: Items[];
+      date: Date;
+      payment: string;
+    }[];
+  };
 }
 
 export default function SuccessfullPage() {
   const { user } = useUser();
 
-  const { data, error } = useQuery<PlaceOrder[]>("orders", async () => {
-    const response = await axios.get<PlaceOrder[]>(`/api/newOrders`);
+  const { data } = useQuery<PlaceOrder>("orders", async () => {
+    const response = await axios.get<PlaceOrder>(
+      `http://127.0.0.1:3003/api/orders/place`
+    );
     return response.data;
   });
 
-  const currentOrders = data?.filter(
+  const currentOrders = data?.data.order?.filter(
     (el) =>
       el.address.name === user?.fullName ||
       (el.address.name === user?.firstName &&

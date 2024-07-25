@@ -65,10 +65,9 @@ export default function DeliveryConfirmatory() {
 
         "Content-Type": "application/json",
       };
-      const url = "http://127.0.0.1:3003";
 
       const response = await axios.post(
-        `${url}/api/orders/place`,
+        `http://127.0.0.1:3003/api/orders/place`,
         ordersDetails,
         {
           headers: headerAuth,
