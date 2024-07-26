@@ -58,10 +58,7 @@ export default function SuccessfullPage() {
   });
 
   const currentOrders = data?.data.order?.filter(
-    (el) =>
-      el.address.name === user?.fullName ||
-      (el.address.name === user?.firstName &&
-        el.address.email === user?.emailAddresses[0].emailAddress)
+    (el) => el.address.email === user?.emailAddresses[0].emailAddress
   );
 
   if (!currentOrders) return null;

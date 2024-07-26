@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { useOrder } from "../context/OrderContext";
 import { FoodList } from "../types";
-import { useOneRestaurants } from "@/services/useOrder";
 
 interface Props {
   food_list: FoodList[];
