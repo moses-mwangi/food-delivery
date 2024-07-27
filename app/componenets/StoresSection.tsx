@@ -37,7 +37,10 @@ export default function StoresSection() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-7">
         {restaurants?.map((store) => (
-          <div key={store.restName} className="flex flex-col gap-2">
+          <div
+            key={store.restName}
+            className="flex cursor-pointer flex-col gap-2"
+          >
             <div
               onClick={() => {
                 setDeliveryPrice(store.deliveryPrice);

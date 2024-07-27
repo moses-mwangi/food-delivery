@@ -60,9 +60,7 @@ export default function DeliveryConfirmatory() {
       };
 
       const headerAuth = {
-        Authorization:
-          "Bearer sk_test_51Pc94CCvj25n1SVem04vih54JceXmpjdD082Q0b0r82teXzVN2IgWfsuSGjFHdrEb2915MlljPfhG9jG4oxk6oml009dflPvGy",
-
+        Authorization: process.env.STRIPE_SECRET_KEY,
         "Content-Type": "application/json",
       };
 
