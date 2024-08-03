@@ -12,7 +12,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const { user } = useUser();
 
   const { data: fetchedUsers } = useQuery<Users>("users", async () => {
-    const response = await axios.get<Users>(`http://127.0.0.1:3003/api/users`);
+    const response = await axios.get<Users>(
+      `https://food-backend-xi.vercel.app/api/users`
+    );
 
     return response.data;
   });

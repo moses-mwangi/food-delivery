@@ -50,7 +50,7 @@ export default function SuccessfullPage() {
 
   const { data } = useQuery<PlaceOrder>("orders", async () => {
     const response = await axios.get<PlaceOrder>(
-      `http://127.0.0.1:3003/api/orders/place`
+      `https://food-backend-xi.vercel.app/api/orders/place`
     );
     return response.data;
   });

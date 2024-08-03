@@ -65,7 +65,7 @@ export default function DeliveryConfirmatory() {
       };
 
       const response = await axios.post(
-        `http://127.0.0.1:3003/api/orders/place`,
+        `https://food-backend-xi.vercel.app/api/orders/place`,
         ordersDetails,
         {
           headers: headerAuth,
