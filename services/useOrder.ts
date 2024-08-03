@@ -8,7 +8,7 @@ export function useOneRestaurants() {
     "restaurants",
     async () => {
       const response = await axios.get<TypeRestaurants>(
-        `http://127.0.0.1:3003/api/restaurants`
+        `https://food-backend-xi.vercel.app/api/restaurants`
       );
       return response.data;
     }
